@@ -5,20 +5,36 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serve:ssr": "nodemon server.js",
+    "build:ssr": "rimraf dist && npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production webpack --color --config build/webpack.client.config.js --progress --hide-modules",
+    "build:server": "cross-env NODE_ENV=production webpack --color --config build/webpack.server.config.js --progress --hide-modules"
   },
   "dependencies": {
+    "compression": "^1.7.4",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "cross-env": "^7.0.2",
+    "nodemon": "^2.0.4",
+    "route-cache": "^0.4.5",
+    "serve-favicon": "^2.5.0",
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.3",
+    "vue-server-renderer": "^2.6.12",
+    "vuex": "^3.5.1",
+    "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "chokidar": "^3.4.2",
+    "rimraf": "^3.0.2",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-node-externals": "^2.5.2"
   },
   "eslintConfig": {
     "root": true,
